@@ -1,17 +1,24 @@
 // APP.jsx는 리액트의 진입점
 import './App.css'
+import Header from './component/Header.jsx';
+import Footer from './component/Footer.jsx';
 // import MyClock from './02/MyClock.jsx';
 // import MyDiv1 from './03/MyDiv1.jsx';
-import MyList from './04/MyList.jsx';
+// import MyList from './04/MyList.jsx';
+// import MyToggle from './05/MyToggle.jsx';
+import Lotto from './06/Lotto.jsx';
 
 function App() {
   return (
     // h-screen: 화면 전체 높이
     // h-full: 부모 높이 100%
-    <div className='w-full h-screen flex flex-col justify-center items-center font-medium'>
-      {/* <MyClock/> */}
-      {/* <MyDiv1 /> */}
-      <MyList/>
+    // overflow-y-hidden: 세로 스크롤바 숨김
+    <div className='w-full h-screen flex flex-col justify-center items-center overflow-y-hidden'>
+      <Header/>
+      <main className='container mx-auto flex flex-col flex-grow justify-center items-center'>
+        <Lotto/>
+      </main>
+      <Footer/>
     </div>
   )
 }

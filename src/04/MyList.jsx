@@ -9,7 +9,7 @@ export default function MyList() {
     //map() 함수: 배열의 각 요소에 대해 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환
     const tags = MyListData.map(data => <MyListItem
                                         key={data.title} //key는 리액트에서 배열을 렌더링할 때 각 요소를 고유하게 식별하기 위해 필요, 주로 id나 고유한 값을 사용
-                                        title={data.title} imgUrl={data.imgUrl} content={data.content}/>); 
+                                        title={data.title} imgUrl={data.imgUrl} content={data.content}/>); //key, title, imgUrl, content는 속성(props)
    
     return (
     //grid로 나누면 나눈 칸 사이에 마진이 자동 적용됨

@@ -1,7 +1,9 @@
 //1. useState 훅 사용 시 임포트
+//훅이란 리액트에서 함수형 컴포넌트가 상태와 생명주기 기능을 사용할 수 있게 해주는 특수한 함수
 //중괄호 필수
-import { use, useState } from "react";
+import { use, useState } from "react"; // export default가 아닌 export된 것들은 중괄호로 감싸서 임포트
 
+//props 대신 구조분해할당으로 받기
 export default function MyListItem({title, imgUrl, content}) {
     //2. useState 선언
     //useState는 값 두 개를 배열로 반환함 => 1) 현재 상태 값, 2) 상태를 업데이트하는 함수
@@ -11,8 +13,10 @@ export default function MyListItem({title, imgUrl, content}) {
     // 클릭했을 때 좋아요 숫자 증가하는 함수 생성
     // 3. scnt의 값 증가시키기
     // scnt는 setScnt() 함수 없이는 값 변화 못 시킴
+    let cnt = 0;
     const handleClickscnt = () => {
-        console.log(`${title} click`, scnt);
+        cnt = cnt + 1;
+        console.log(`${title} click`, scnt, `${cnt}`);
         return setScnt(scnt + 1); //scnt 값 1 증가
     }
 
@@ -23,7 +27,7 @@ export default function MyListItem({title, imgUrl, content}) {
     }
 
     return (
-        <div className='border-2 border-solid border-gray-300
+    <div className='border-2 border-solid border-gray-300
                     flex justify-start items-start
                     w-full text-xl'>
         <img src={imgUrl} alt={title}></img>
@@ -31,7 +35,7 @@ export default function MyListItem({title, imgUrl, content}) {
             <div className='mb-8'>
                 <h1 className='font-extrabold text-blue-950 text-4xl mb-5'>{title}</h1>
                 <div className='text-gray-500'>{content}</div>
-            </div>
+            </div> 
             <div className='w-full flex justify-between font-bold'>
                 <div className='cursor-pointer hover:bg-gray-200 hover:text-red-600' onClick={handleClickscnt}> {/* 이벤트 발생 */}
                 {/* useState라는 훅을 써서 화면을 동적으로 변화시켜야 함 */}
