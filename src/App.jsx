@@ -6,7 +6,8 @@ import Footer from './component/Footer.jsx';
 // import MyDiv1 from './03/MyDiv1.jsx';
 // import MyList from './04/MyList.jsx';
 // import MyToggle from './05/MyToggle.jsx';
-import Lotto from './06/Lotto.jsx';
+// import Lotto from './06/Lotto.jsx';
+import FoodMain from './07/FoodMain.jsx';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
     // overflow-y-hidden: 세로 스크롤바 숨김
     <div className='w-full h-screen flex flex-col justify-center items-center overflow-y-hidden'>
       <Header/>
-      <main className='container mx-auto flex flex-col flex-grow justify-center items-center'>
-        <Lotto/>
+      <main className='h-1/4 container mx-auto flex flex-col flex-grow justify-center items-center'>
+        <FoodMain/>
       </main>
       <Footer/>
     </div>

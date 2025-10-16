@@ -1,4 +1,4 @@
-//btnStyle 객체: 버튼 색상별 Tailwind CSS 클래스 정의
+//btStyle 객체: 버튼 색상별 Tailwind CSS 클래스 정의
 const btStyle = {
         blue: {
             base: "bg-blue-600",
