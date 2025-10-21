@@ -2,12 +2,13 @@
 import './App.css'
 import Header from './component/Header.jsx';
 import Footer from './component/Footer.jsx';
-// import MyClock from './02/MyClock.jsx';
+import MyClock from './02/MyClock.jsx';
 // import MyDiv1 from './03/MyDiv1.jsx';
 // import MyList from './04/MyList.jsx';
 // import MyToggle from './05/MyToggle.jsx';
 // import Lotto from './06/Lotto.jsx';
-import FoodMain from './07/FoodMain.jsx';
+// import FoodMain from './07/FoodMain.jsx';
+// import MyEffect from './08/MyEffect.jsx';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
     <div className='w-full h-screen flex flex-col justify-center items-center overflow-y-hidden'>
       <Header/>
       <main className='h-1/4 container mx-auto flex flex-col flex-grow justify-center items-center'>
-        <FoodMain/>
+        <MyClock/>
       </main>
       <Footer/>
     </div>

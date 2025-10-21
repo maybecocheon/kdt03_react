@@ -21,8 +21,8 @@ export default function FoodCard({data}) {
             <p className='font-bold text-xl'> {data["운영주체명"]}</p> <br/>
             <p> {data["사업장 소재지"]}</p> <br/>
             <div className={`p-2 text-sm bg-black ${click? 'text-white' : 'text-black'}`} onClick={handleClick}>
-                <p>연락처(대표번호): {data["연락처(대표번호)"]}</p>
-                <p>팩스번호: {data["팩스번호"]}</p>
+                <p>☎ 연락처(대표번호): {data["연락처(대표번호)"]}</p>
+                <p>☎ 팩스번호: {data["팩스번호"]}</p>
             </div>  
         </div>
     </div>
