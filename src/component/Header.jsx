@@ -5,8 +5,9 @@ export default function Header() {
               <h1 className='font-extrabold text-4xl'>KDT React</h1>
               {/* space-x => 요소 사이의 공간을 제어 */}
               <ul className='flex justify-between items-end space-x-4'>
-                <li className='font-bold hover:cursor-pointer'>Home</li>
+                <li className='font-extrabold hover:cursor-pointer'>Home</li>
                 <li className='font-bold hover:cursor-pointer'>로또</li>
+                <li className='font-bold hover:cursor-pointer'>일일박스오피스</li>
               </ul>
             </nav>
     </header>

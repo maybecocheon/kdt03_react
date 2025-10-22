@@ -1,5 +1,5 @@
-import { useState } from 'react'; //변수처럼 쓰는 훅
-import { useEffect } from 'react'; //함수처럼 쓰는 훅
+import { useState } from 'react'; //변수 관리하는 훅
+import { useEffect } from 'react'; //함수 관리하는 훅
 import TailButton from "../component/TailButton"
 
 export default function MyEffect() {
@@ -25,7 +25,7 @@ export default function MyEffect() {
   }
   
   // 내가 부르지 않아도 실행 시점만 정해 두면 자동 실행되는 함수
-  // 배열(변수)의 값에 따라 실행이 됨 => 디펜더시 array
+  // 실행 시점: 배열(변수)의 값에 따라 실행이 됨 => 디펜더시 array
   // 1. 배열 비어 있으면 컴포넌트 생성 시 한 번 실행
   useEffect(() => {
     console.log("컴포넌트 생성");
