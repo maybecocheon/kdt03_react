@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import TrafficNav from "./TrafficNav"
 import TrafficInfo from "./TrafficInfo"
-import trafficData from "./교통사고통계.json"
+// import trafficData from "./교통사고통계.json"
 
 export default function Accident() {
+  // api url
+  const apiKey = import.meta.env.VITE_PUBLIC_API;
+  const url = "https://api.odcloud.kr/api/15070282/v1/uddi:8449c5d7-8be5-4712-9093-968fc0b2d9fc?page=1&perPage=117&returnType=json&serviceKey=" + apiKey;
 
   // 전체 데이터
   const [tdata, setTdata] = useState([]);
@@ -20,8 +23,10 @@ export default function Accident() {
   const [info, setInfo] = useState([]);
 
   // 전체 데이터를 tdata에 넣는 함수
-  const getFetchData = () => {
-    setTdata(trafficData);
+  const getFetchData = async () => {
+    const resp = await fetch(url);
+    const trafficData = await resp.json();
+    setTdata(trafficData.data);
   }
 
   // 컴포넌트 실행했을 때 데이터 불러오기
@@ -33,7 +38,7 @@ export default function Accident() {
   useEffect(() => {
     if (tdata.length == 0) return;
 
-    let arr = trafficData.map(item => item["사고유형대분류"]);
+    let arr = tdata.map(item => item["사고유형대분류"]);
     let set = new Set(arr);
     set = Array.from(set);
     setC1(set);
@@ -44,7 +49,7 @@ export default function Accident() {
     if (c1.length == 0) return;
 
     setInfo([]);
-    let arr2 = trafficData.filter(item => item["사고유형대분류"] == selectC1).map(item => item["사고유형"]);
+    let arr2 = tdata.filter(item => item["사고유형대분류"] == selectC1).map(item => item["사고유형"]);
     let set2 = [...new Set(arr2)];
     setC2(set2);
   }, [selectC1])
@@ -53,7 +58,7 @@ export default function Accident() {
   useEffect(() => {
     if (!selectC1 || !selectC2) return;
 
-    let info2 = trafficData.filter(item => item["사고유형대분류"] == selectC1 && item["사고유형"] == selectC2);
+    let info2 = tdata.filter(item => item["사고유형대분류"] == selectC1 && item["사고유형"] == selectC2);
     setInfo(info2);
   }, [selectC2])
 
