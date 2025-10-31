@@ -14,7 +14,8 @@ import Footer from './component/Footer.jsx'
 // import MyRef from './11/MyRef.jsx'
 // import RefCal from './12/RefCal.jsx'
 // import Gallery from './13/Gallery.jsx'
-import Festival from './14/Festival.jsx'
+// import Festival from './14/Festival.jsx'
+import RouteMain from './15/RouteMain.jsx'
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
     // overflow-y-hidden: 세로 스크롤바 숨김
     <div className='w-full h-screen flex flex-col justify-center items-center overflow-y-hidden'>
       <Header/>
-      <main className='h-1/4 container mx-auto flex flex-col flex-grow justify-center items-center'>
-        <Festival/>
+      <main className='m-2 container mx-auto flex flex-col flex-grow'>
+        <RouteMain/>
       </main>
       <Footer/>
     </div>

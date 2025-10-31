@@ -34,7 +34,7 @@ export default function Gallery() {
       .then(data => {
         const items = data.response.body.items.item;
         const infos = items.map((item, i)=> 
-                          <TailCard key={i} source={item.galWebImageUrl} title={item.galTitle} address={item.galPhotographyLocation} keyword={item.galSearchKeyword}/>)
+                          <TailCard key={i} source={item.galWebImageUrl} title={item.galTitle} subtitle={item.galPhotographyLocation} keyword={item.galSearchKeyword}/>)
         setCard(infos);
       })
       .catch(err => console.log(err));
@@ -68,7 +68,7 @@ export default function Gallery() {
           </div>
         </form>
         </div>
-      <div className="w-full h-1/2 flex justify-center flex-wrap grid-cols-3 gap-4 overflow-y-auto">
+      <div className="w-full h-1/2 p-5 flex justify-center flex-wrap grid-cols-3 gap-4 overflow-y-auto">
         {card}
       </div>
     </div>
