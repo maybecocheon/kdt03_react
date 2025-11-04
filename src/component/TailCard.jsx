@@ -13,7 +13,7 @@ export default function TailCard({source, title, subtitle, keyword}) {
   }
 
   return (
-    <div className="rounded-lg w-1/4 shadow-md overflow-hidden flex flex-col">
+    <div className="rounded-lg w-100 shadow-md overflow-hidden flex flex-col">
       <img src={source} className="rounded-lg h-60 w-full object-cover"/>
       <div className="flex flex-col p-4 flex-grow">
         <div>

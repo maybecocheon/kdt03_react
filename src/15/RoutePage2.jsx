@@ -1,6 +1,8 @@
 import { useSearchParams } from "react-router-dom"
 
 export default function RoutePage2() {
+    // useSearchParams: 쿼리스트링 읽기
+    // useNavigate 쓸 때 주로 같이 씀
     const [sParams] = useSearchParams();
 
     return (
