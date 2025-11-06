@@ -19,6 +19,7 @@ import Festival from './14/Festival.jsx'
 import FestivalContents from './14/FestivalContents.jsx'
 // import RouteMain from './15/RouteMain.jsx'
 import ChargeInfo from './16/ChargeInfo.jsx'
+import Charge from './16/Charge.jsx'
 
 function App() {
   return (
