@@ -5,9 +5,11 @@ import zscode from '../16/data/zscode.json'
 import kind from '../16/data/kind.json'
 import kinddetail from '../16/data/kinddetail.json'
 import { useEffect, useRef, useState } from 'react'
-import TailCard from '../component/TailCard.jsx'
 import ChargedCard from './ChargedCard.jsx'
 import statJson from '../16/data/stat.json'
+import loadingGif from '../assets/ic_loading_img.gif'
+import { Link } from 'react-router-dom'
+import ChargeStat from './ChargeStat.jsx'
 
 export default function ChargeInfo() {
     // 데이터에서 sel1에 들어갈 값들만 배열로 추출
@@ -79,11 +81,16 @@ export default function ChargeInfo() {
         const data = await resp.json();
         // url data 불러 오기
         let text = data.items.item;
-        let info = text.map((item, idx) => <div key={idx} className="p-5 border-1 border-black rounded-md">{item.statNm}</div>);
-        setCard(info);
         // stat
         let statCard = Object.keys(statJson).map(scode => <ChargedCard key={scode} title={statJson[scode]} count={text.filter(item => item.stat == scode).length}/>)
         setStats(statCard);
+        // 상세 페이지로 이동할 카드
+        console.log(text)
+        let info = text.map((item, idx) =>
+                            <Link key={item.statId + idx} to="/chargeDetail" state={{contents: item}}>
+                                <ChargeStat title={item.statNm} chgerId={item.chgerId}/>
+                            </Link>);
+        setCard(info);
         setLoading(false);
     }
 
@@ -131,9 +138,9 @@ export default function ChargeInfo() {
     }
 
     return (
-        <div className="h-full w-full p-5">
-            <h2 className="font-extrabold text-4xl mb-10">전기차 충전소 정보</h2>
-            <div className="flex flex-row gap-4 w-full bg-amber-50 p-5 mb-5">
+        <div className="h-full w-full p-10">
+            <h2 className="font-extrabold text-4xl mb-10 text-center">전기차 충전소 정보</h2>
+            <div className="flex flex-row gap-4 w-full bg-amber-50 p-5">
                 <TailSelect id="sel1" title="시도" ref={sel1Ref} values={zcodeValues} keys={zcodeKeys} onHandle={onZcodeClick} />
                 <TailSelect id="sel2" title="지역동" ref={sel2Ref} values={zscodeValue} keys={zscodeKey} onHandle={onZscodeClick} />
                 <TailSelect id="sel3" title="충전소구분" ref={sel3Ref} values={kindValue} keys={kindKey} onHandle={onKindClick} />
@@ -141,8 +148,8 @@ export default function ChargeInfo() {
                 <TailButton color="blue" caption="검색" onHandle={onSearchClick} />
                 <TailButton color="orange" caption="취소" onHandle={onCancelClick} />
             </div>
-            <div className="font-extrabold text-4xl mb-10 w-full text-center">
-                {loading ? "로딩 중..." : ""}
+            <div className="flex flex-col items-center font-extrabold text-4xl mb-10 w-full text-center">
+                {loading ? <img name="loadingImage" alt="로딩중" src={loadingGif} /> : ""}
             </div>
             <div className="flex flex-row justify-center gap-4 w-full p-5 mb-5">
                 {stats.length != 0 ? <ChargedCard title="충전소수" count={card.length}/> : ""}

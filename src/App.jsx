@@ -15,11 +15,14 @@ import BoxOffice from './09/BoxOffice.jsx'
 // import MyRef from './11/MyRef.jsx'
 // import RefCal from './12/RefCal.jsx'
 import Gallery from './13/Gallery.jsx'
-import Festival from './14/Festival.jsx'
-import FestivalContents from './14/FestivalContents.jsx'
+//import Festival from './14/Festival.jsx'
+//import FestivalContents from './14/FestivalContents.jsx'
+import Festival from './14-1/Festival2.jsx'
+import FestivalContents from './14-1/FestivalContents2.jsx'
 // import RouteMain from './15/RouteMain.jsx'
 import ChargeInfo from './16/ChargeInfo.jsx'
-import Charge from './16/Charge.jsx'
+import ChargerDetail from './16/ChargerDetail.jsx'
+import JotaiCnt from './17/JotaiCnt.jsx'
 
 function App() {
   return (
@@ -38,6 +41,8 @@ function App() {
             <Route path="/festival" element={<Festival />} />
             <Route path="/festival/contents" element={<FestivalContents />} />
             <Route path="/chargeInfo" element={<ChargeInfo />} />
+            <Route path="/chargeDetail" element={<ChargerDetail />} />
+            <Route path="/JotaiCnt" element={<JotaiCnt />} />
           </Routes>
         </main>
         <Footer />

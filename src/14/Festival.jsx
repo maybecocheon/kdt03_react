@@ -26,7 +26,7 @@ export default function Festival() {
         setOptionlist(options);
         let infos;
         // if (selectedValue != null){
-        if (selRef.current.value != "all") {
+        if (selRef.current.value != "") {
             // infos = await data.getFestivalKr.item.filter(item => item.GUGUN_NM == selectedValue);
             infos = await data.getFestivalKr.item.filter(item => item.GUGUN_NM == selRef.current.value);
         } else {
@@ -34,7 +34,8 @@ export default function Festival() {
         }
         infos = infos.map((item, i) =>
             <Link key={i} state={{ contents: item }} to="/festival/contents">
-                <TailCard key={i} source={item.MAIN_IMG_THUMB} title={item.TITLE} subtitle={item.USAGE_DAY_WEEK_AND_TIME} keyword={item.PLACE} /></Link>);
+                <TailCard key={i} source={item.MAIN_IMG_THUMB} title={item.TITLE} subtitle={item.USAGE_DAY_WEEK_AND_TIME} keyword={item.PLACE} />
+            </Link>);
         setCard(infos);
     }
 
@@ -48,10 +49,10 @@ export default function Festival() {
 
     return (
         <div className="w-full h-full p-5 flex flex-col items-center gap-3">
-            <div className="w-full h-40 p-10 text-center font-extrabold text-4xl mb-5 text-black bg-blue-50">부산 축제 정보</div>
+            <div className="w-full p-10 text-center font-extrabold text-4xl mb-5 text-black bg-blue-50">부산 축제 정보</div>
             {/* <select value={selectedValue} onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md"> */}
             <select ref={selRef} onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md">
-                <option value="all" selected>== 모든 지역 ==</option>
+                <option value="" selected>== 모든 지역 ==</option>
                 {optionlist}
             </select>
             <div className="w-full h-auto p-5 flex flex-wrap grid-cols-3 justify-center gap-4">

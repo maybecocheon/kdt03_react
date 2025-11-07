@@ -73,7 +73,7 @@ export default function BoxOffice() {
     }, [dt]);
 
     return (
-        <div className="w-8/10">
+        <div className="w-8/10 h-full mt-5">
             <h1 className="font-extrabold text-3xl text-center">일일박스 오피스</h1>
             <div className="flex flex-col items-end">
                 <p>📅기준날짜: &nbsp;
