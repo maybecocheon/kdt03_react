@@ -22,7 +22,8 @@ import FestivalContents from './14-1/FestivalContents2.jsx'
 // import RouteMain from './15/RouteMain.jsx'
 import ChargeInfo from './16/ChargeInfo.jsx'
 import ChargerDetail from './16/ChargerDetail.jsx'
-import JotaiCnt from './17/JotaiCnt.jsx'
+// import JotaiCnt from './17/JotaiCnt.jsx'
+import TodoList from './18/TodoList.jsx'
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             <Route path="/festival/contents" element={<FestivalContents />} />
             <Route path="/chargeInfo" element={<ChargeInfo />} />
             <Route path="/chargeDetail" element={<ChargerDetail />} />
-            <Route path="/JotaiCnt" element={<JotaiCnt />} />
+            <Route path="/todolist" element={<TodoList />} />
           </Routes>
         </main>
         <Footer />
