@@ -22,9 +22,9 @@ export default function TailButton({color, caption, onHandle}) {
     const bt = btStyle[color];
 
     return (
-        <div className="w-full"> 
+        <div className="w-full h-full"> 
             {/* 변수 사용하려면 표현식 안에 넣어 주어야 함 */}
-            <button type="button" className={`rounded-md pb-3 pt-3 pl-5 pr-5 w-full text-white hover:cursor-pointer hover:font-bold ${bt.base} ${bt.hover}`}
+            <button type="button" className={`rounded-md pb-3 pt-3 pl-5 pr-5 w-full h-full text-white hover:cursor-pointer hover:font-bold ${bt.base} ${bt.hover}`}
                         onClick={onHandle}>{caption}</button>
         </div>
     )

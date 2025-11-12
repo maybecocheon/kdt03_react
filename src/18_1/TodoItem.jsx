@@ -1,10 +1,9 @@
 import TailButton from '../component/TailButton'
-import { useSetAtom } from 'jotai'
-import { todosAtom } from './atomsTodo';
 import { useEffect, useRef, useState } from "react";
 
-export default function TodoItem({ todo }) {
-    const setTodos = useSetAtom(todosAtom);
+export default function TodoItem({ todo, onHandle, localStTodos }) {
+    // 로컬 스토리지에서 값 들고 오기
+    // const todos = JSON.parse(localStorage.getItem("todo")) || [];
 
     // 수정 여부를 묻는 state 
     const [isEdit, setIsEdit] = useState(false);
@@ -29,17 +28,17 @@ export default function TodoItem({ todo }) {
 
     // 삭제 클릭 시 함수
     const onClickDel = () => {
-        setTodos(prev => prev.filter(item => item.id !== todo.id));
+        onHandle(localStTodos.filter(item => item.id !== todo.id));
     }
 
     // 저장 클릭 시 함수
-    const onClickStore = () => {
+    const onClickSave = () => {
         if (editValue == "") {
             alert("값을 입력해 주세요.");
             editValue.focus();
             return;
         }
-        setTodos(prev => prev.map(t => t.id == todo.id ? { ...t, text: editValue } : t));
+        onHandle(localStTodos.map(t => t.id == todo.id ? { ...t, text: editValue } : t));
         setIsEdit(false);
     }
 
@@ -51,23 +50,26 @@ export default function TodoItem({ todo }) {
 
     // 체크 시
     const onCheckToggle = () => {
-        setTodos(prev => prev.map(t => t.id == todo.id ? { ...t, completed: !t.completed } : t))
+        const localCheck = localStTodos.map(t => t.id == todo.id ? { ...t, completed: !t.completed } : t);
+        // 체크 시 true 값이 아래로 내려가게 하기
+        onHandle([...localCheck].sort((a, b) => a.completed - b.completed));
     }
+
     return (
-        <div className="flex gap-2 mb-2">
-            <div className="flex w-full gap-2 items-center">
+        <div className="flex gap-5 mb-2">
+            <div className="flex w-full gap-5 items-center bg-yellow-50 p-2">
                 <input type="checkbox" name={todo.id} ref={todoCheckValue} onChange={onCheckToggle} />
-                {isEdit ? <input type="text" name={todo.id} value={editValue} ref={editRef} onChange={(e) => setEditValue(e.target.value)} className="p-2" />
-                    :
-                    <p className={todo.completed ? "line-through" : ""}>{todo.text}</p>}
+                {isEdit ?
+                <input type="text" name={todo.id} value={editValue} ref={editRef} onChange={(e) => setEditValue(e.target.value)} className="p-2 w-full focus: bg-gray-50" />
+                    : <p className={todo.completed ? "line-through text-gray-300" : ""}>{todo.text}</p>}
             </div>
             {isEdit ?
-                <div className="flex gap-5 w-4/10">
-                    <TailButton color="green" caption="저장" onHandle={onClickStore} />
+                <div className="flex gap-5 w-3/10">
+                    <TailButton color="green" caption="저장" onHandle={onClickSave} />
                     <TailButton color="orange" caption="취소" onHandle={onClickCancel} />
                 </div>
                 :
-                <div className="flex gap-5 w-4/10">
+                <div className="flex gap-5 w-3/10">
                     <TailButton color="green" caption="수정" onHandle={onClickChange} />
                     <TailButton color="orange" caption="삭제" onHandle={onClickDel} />
                 </div>

@@ -13,5 +13,5 @@ export const completedAtom = atom(get => {
 
 // todo 미완료된 개수
 export const incomletedAtom = atom(get => {
-    return get(todosAtom).length - get(completedAtom)
+    return todos.filter(todo => !todo.completed).length;
 })

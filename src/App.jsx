@@ -17,13 +17,13 @@ import BoxOffice from './09/BoxOffice.jsx'
 import Gallery from './13/Gallery.jsx'
 //import Festival from './14/Festival.jsx'
 //import FestivalContents from './14/FestivalContents.jsx'
-import Festival from './14-1/Festival2.jsx'
-import FestivalContents from './14-1/FestivalContents2.jsx'
+import Festival from './14_1/Festival2.jsx'
+import FestivalContents from './14_1/FestivalContents2.jsx'
 // import RouteMain from './15/RouteMain.jsx'
 import ChargeInfo from './16/ChargeInfo.jsx'
 import ChargerDetail from './16/ChargerDetail.jsx'
 // import JotaiCnt from './17/JotaiCnt.jsx'
-import TodoList from './18/TodoList.jsx'
+import TodoList from './18_1/TodoList.jsx'
 
 function App() {
   return (
