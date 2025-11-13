@@ -17,6 +17,7 @@ export default function RouteNav() {
             <button onClick={handleClick} className="font-bold hover:cursor-pointer hover:text-gray-300">부산축제정보</button>
             <Link to="/chargeInfo" className="font-bold hover:cursor-pointer hover:text-gray-300">전기차충전소정보</Link>
             <Link to="/todolist" className="font-bold hover:cursor-pointer hover:text-gray-300">할일목록</Link>
+            <Link to="/subway" className="font-bold hover:cursor-pointer hover:text-gray-300">지하철실내공기질</Link>
         </div>
     )
 }

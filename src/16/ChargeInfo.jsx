@@ -140,7 +140,7 @@ export default function ChargeInfo() {
     return (
         <div className="h-full w-full p-10">
             <h2 className="font-extrabold text-4xl mb-10 text-center">전기차 충전소 정보</h2>
-            <div className="flex flex-row gap-4 w-full bg-amber-50 p-5">
+            <div className="flex flex-row gap-4 w-full bg-gray-50 p-5">
                 <TailSelect id="sel1" title="시도" ref={sel1Ref} values={zcodeValues} keys={zcodeKeys} onHandle={onZcodeClick} />
                 <TailSelect id="sel2" title="지역동" ref={sel2Ref} values={zscodeValue} keys={zscodeKey} onHandle={onZscodeClick} />
                 <TailSelect id="sel3" title="충전소구분" ref={sel3Ref} values={kindValue} keys={kindKey} onHandle={onKindClick} />

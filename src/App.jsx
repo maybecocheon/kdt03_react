@@ -24,6 +24,7 @@ import ChargeInfo from './16/ChargeInfo.jsx'
 import ChargerDetail from './16/ChargerDetail.jsx'
 // import JotaiCnt from './17/JotaiCnt.jsx'
 import TodoList from './18_1/TodoList.jsx'
+import Subway from './19/Subway.jsx'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/chargeInfo" element={<ChargeInfo />} />
             <Route path="/chargeDetail" element={<ChargerDetail />} />
             <Route path="/todolist" element={<TodoList />} />
+            <Route path="/subway" element={<Subway />} />
           </Routes>
         </main>
         <Footer />

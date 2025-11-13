@@ -7,11 +7,10 @@ export default defineConfig({
   plugins: [react(), tailwind()],
   server: {
     proxy: {
-      '/photo-api': {
+      '/api': {
         target: 'https://apis.data.go.kr',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/photo-api/, '/B551011/PhotoGalleryService1'),
-        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }

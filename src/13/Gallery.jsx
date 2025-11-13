@@ -26,7 +26,7 @@ export default function Gallery() {
 
   const getFetchData = () => {
     // url은 fetch 할 때마다 바뀌어야 하므로 이 함수 안에 존재해야 함
-    const url = `/photo-api/gallerySearchList1?serviceKey=${apiKey}`
+    const url = `/api/gallerySearchList1?serviceKey=${apiKey}`
                 + `&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${word}&_type=json`;
     if (word != ""){
       fetch(url)
