@@ -4,7 +4,7 @@ export default function BoxOffice() {
 
     // 영화 정보
     const apiKey = import.meta.env.VITE_MV_API;
-    const baseUrl = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?"
+    const baseUrl = "/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?"
 
     //targetDt 기본값은 어제 날짜
     let yesterday = new Date();
@@ -35,24 +35,10 @@ export default function BoxOffice() {
         let url = `${baseUrl}key=${apiKey}&targetDt=${dt}`
 
         // 영화 정보
-
         fetch(url)
-            .then((resp) => resp.json())
-            .then((data) => {
-                let boxs = data.boxOfficeResult.dailyBoxOfficeList;
-                let tags = boxs.map((item, i) =>
-                    <tr className="text-center border-b-1 border-gray-300 hover:cursor-pointer" key={i} onClick={() => onHandleClick(item)}>
-                        <td className="p-3 font-bold">{item.rank}</td>
-                        <td className="p-3">{item.movieNm}</td>
-                        <td className="p-3 text-right">{parseInt(item.salesAmt).toLocaleString()}</td>
-                        <td className="p-3 text-right">{parseInt(item.audiCnt).toLocaleString()}</td>
-                        <td className="p-3 text-right">{parseInt(item.salesAcc).toLocaleString()}</td>
-                        <td className="p-3 text-right">{parseInt(item.audiAcc).toLocaleString()}</td>
-                        <td className="p-3">{item.rankInten > 0 ? <span className="text-red-500">▲ {item.rankInten}</span>
-                            : item.rankInten == 0 ? "-"
-                                : <span className="text-blue-800">▼ {item.rankInten.replaceAll("-", "")}</span>}</td>
-                    </tr>
-                )
+            .then(resp => resp.json())
+            .then(data => {
+                let tags = data.boxOfficeResult.dailyBoxOfficeList;
                 setTag(tags);
             })
             .catch(err => console.log(err))
@@ -92,7 +78,23 @@ export default function BoxOffice() {
                         </tr>
                     </thead>
                     <tbody className="text-gray-700">
-                        {tag}
+                        {
+                            tag?
+                                tag.map((item, i) =>
+                                <tr className="text-center border-b-1 border-gray-300 hover:cursor-pointer" key={i} onClick={() => onHandleClick(item)}>
+                                    <td className="p-3 font-bold">{item.rank}</td>
+                                    <td className="p-3">{item.movieNm}</td>
+                                    <td className="p-3 text-right">{parseInt(item.salesAmt).toLocaleString()}</td>
+                                    <td className="p-3 text-right">{parseInt(item.audiCnt).toLocaleString()}</td>
+                                    <td className="p-3 text-right">{parseInt(item.salesAcc).toLocaleString()}</td>
+                                    <td className="p-3 text-right">{parseInt(item.audiAcc).toLocaleString()}</td>
+                                    <td className="p-3">{item.rankInten > 0 ? <span className="text-red-500">▲ {item.rankInten}</span>
+                                        : item.rankInten == 0 ? "-"
+                                            : <span className="text-blue-800">▼ {item.rankInten.replaceAll("-", "")}</span>}</td>
+                                </tr>
+                            )
+                            : ""
+                        }
                         <tr>
                             <td colSpan="7" className="text-center bg-gray-100 p-3 font-bold text-black">{info}</td>
                         </tr>

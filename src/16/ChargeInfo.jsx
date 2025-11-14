@@ -79,7 +79,6 @@ export default function ChargeInfo() {
         // fetch 시작
         const resp = await fetch(url);
         const data = await resp.json();
-        console.log(data)
         // url data 불러 오기
         let text = data.items.item;
         // stat

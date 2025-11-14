@@ -21,10 +21,7 @@ function FestivalContent() {
     const [area, setArea] = useState([]);
     const [areaFestival, setAreaFestival] = useState([]);
 
-    //const [selectedValue, setSelectedValue] = useState();
     const selRef = useRef();
-
-    // const handleSelected = e => setSelectedValue(e.target.value);
     const handleSelected = () => {
         setGu(selRef.current.value);
     }
