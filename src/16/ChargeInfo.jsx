@@ -79,39 +79,40 @@ export default function ChargeInfo() {
         // fetch 시작
         const resp = await fetch(url);
         const data = await resp.json();
+        console.log(data)
         // url data 불러 오기
         let text = data.items.item;
         // stat
-        let statCard = Object.keys(statJson).map(scode => <ChargedCard key={scode} title={statJson[scode]} count={text.filter(item => item.stat == scode).length}/>)
+        let statCard = Object.keys(statJson).map(scode => <ChargedCard key={scode} title={statJson[scode]} count={text.filter(item => item.stat == scode).length} />)
         setStats(statCard);
         // 상세 페이지로 이동할 카드
         console.log(text)
         let info = text.map((item, idx) =>
-                            <Link key={item.statId + idx} to="/chargeDetail" state={{contents: item}}>
-                                <ChargeStat title={item.statNm} chgerId={item.chgerId}/>
-                            </Link>);
+            <Link key={item.statId + idx} to="/chargeDetail" state={{ contents: item }}>
+                <ChargeStat title={item.statNm} chgerId={item.chgerId} />
+            </Link>);
         setCard(info);
         setLoading(false);
     }
 
     const onSearchClick = () => {
         // 선택 안 했을 때 알람
-        if (sel1Ref.current.value == ""){
+        if (sel1Ref.current.value == "") {
             alert("시도를 선택하세요.");
             sel1Ref.current.focus();
             return;
         }
-        if (sel2Ref.current.value == ""){
+        if (sel2Ref.current.value == "") {
             alert("지역동을 선택하세요.");
             sel2Ref.current.focus();
             return;
         }
-        if (sel3Ref.current.value == ""){
+        if (sel3Ref.current.value == "") {
             alert("충전소 구분을 선택하세요.");
             sel3Ref.current.focus();
             return;
         }
-        if (sel4Ref.current.value == ""){
+        if (sel4Ref.current.value == "") {
             alert("충전소 상세 구분을 선택하세요.");
             sel4Ref.current.focus();
             return;
@@ -120,9 +121,9 @@ export default function ChargeInfo() {
     }
 
     // fetch 완료되면
-    useEffect(()=>{
+    useEffect(() => {
         if (length == 0) return;
-    },[card])
+    }, [card])
 
     // 취소하기
     const onCancelClick = () => {
@@ -140,19 +141,23 @@ export default function ChargeInfo() {
     return (
         <div className="h-full w-full p-10">
             <h2 className="font-extrabold text-4xl mb-10 text-center">전기차 충전소 정보</h2>
-            <div className="flex flex-row gap-4 w-full bg-gray-50 p-5">
-                <TailSelect id="sel1" title="시도" ref={sel1Ref} values={zcodeValues} keys={zcodeKeys} onHandle={onZcodeClick} />
-                <TailSelect id="sel2" title="지역동" ref={sel2Ref} values={zscodeValue} keys={zscodeKey} onHandle={onZscodeClick} />
-                <TailSelect id="sel3" title="충전소구분" ref={sel3Ref} values={kindValue} keys={kindKey} onHandle={onKindClick} />
-                <TailSelect id="sel4" title="충전소상세" ref={sel4Ref} values={kinddetailValue} keys={kinddetailKey} />
-                <TailButton color="blue" caption="검색" onHandle={onSearchClick} />
-                <TailButton color="orange" caption="취소" onHandle={onCancelClick} />
+            <div className="flex flex-row items-center gap-4 w-full bg-gray-50 p-5">
+                <div className="flex flex-row gap-4 w-8/10">
+                    <TailSelect id="sel1" title="시도" ref={sel1Ref} values={zcodeValues} keys={zcodeKeys} onHandle={onZcodeClick} />
+                    <TailSelect id="sel2" title="지역동" ref={sel2Ref} values={zscodeValue} keys={zscodeKey} onHandle={onZscodeClick} />
+                    <TailSelect id="sel3" title="충전소구분" ref={sel3Ref} values={kindValue} keys={kindKey} onHandle={onKindClick} />
+                    <TailSelect id="sel4" title="충전소상세" ref={sel4Ref} values={kinddetailValue} keys={kinddetailKey} />
+                </div>
+                <div className="flex flex-row w-2/10 h-1/2 gap-4">
+                    <TailButton color="blue" caption="검색" onHandle={onSearchClick} />
+                    <TailButton color="orange" caption="취소" onHandle={onCancelClick} />
+                </div>
             </div>
             <div className="flex flex-col items-center font-extrabold text-4xl mb-10 w-full text-center">
                 {loading ? <img name="loadingImage" alt="로딩중" src={loadingGif} /> : ""}
             </div>
             <div className="flex flex-row justify-center gap-4 w-full p-5 mb-5">
-                {stats.length != 0 ? <ChargedCard title="충전소수" count={card.length}/> : ""}
+                {stats.length != 0 ? <ChargedCard title="충전소수" count={card.length} /> : ""}
                 {stats}
             </div>
             <div className="h-auto w-full grid grid-cols-4 text-center gap-2">

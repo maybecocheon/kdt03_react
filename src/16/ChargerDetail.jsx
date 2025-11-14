@@ -25,7 +25,7 @@ export default function ChargerDetail() {
             <div className="w-1/2 h-auto mt-5 m-3 shadow-lg rounded-4xl p-5 border-1 border-blue-400">
                     <div className="flex p-2">
                         <p className="w-30 text-right font-bold pr-5">위치</p>
-                        <p>{contents.addr} {contents.addrDetail != null ? contents.addrDetail : ""} {contents.location}</p>
+                        <p>{contents.addr} {contents.addrDetail != null || contents.addrDetail != "null"  ? contents.addrDetail : ""}</p>
                     </div>
                     <div className="flex p-2">
                         <p className="w-30 text-right font-bold pr-5">상태</p>
