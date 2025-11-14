@@ -21,7 +21,6 @@ export default function Subway() {
         setSubDatas(subData);
     }
 
-
     const onClickArea = () => {
         getFetchData();
     }

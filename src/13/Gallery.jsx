@@ -60,9 +60,9 @@ export default function Gallery() {
     <div className="w-9/10 h-full">
       <div className="w-full flex flex-col items-center bg-amber-50 p-5 mt-5 mb-5">
         <h1 className="flex m-10 font-extrabold text-4xl">한국관광공사 관광사진 정보 서비스</h1>
-        <form className="w-3/4 grid grid-cols-2 gap-2">
+        <form className="w-3/4 flex flex-between">
           <TailInput type="text" name="txt1" ref={kwRef} />
-          <div className="w-full flex gap-2">
+          <div className="w-1/2 flex gap-2">
             <TailButton color="blue" caption="조회" onHandle={handleClick}/>
             <TailButton color="blue" caption="취소" onHandle={handleCancel}/>
           </div>

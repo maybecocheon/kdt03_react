@@ -4,7 +4,6 @@ export default function SubwayCard({ dt, idx }) {
     // 시간
     let time = `${dt.controlnumber.slice(0, 4)}. ${dt.controlnumber.slice(4, 6)}. ${dt.controlnumber.slice(6, 8)}. `;
     time = time + `${dt.controlnumber.slice(8, 10)}시`;
-    console.log(idx)
 
     return (
         <div className="pt-5">

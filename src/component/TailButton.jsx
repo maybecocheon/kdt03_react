@@ -1,16 +1,20 @@
 //btStyle 객체: 버튼 색상별 Tailwind CSS 클래스 정의
 const btStyle = {
         blue: {
-            base: "bg-blue-600",
+            base: "bg-blue-300",
             hover: "hover:bg-blue-200 hover:text-blue-950"
         },
         orange: {
-            base: "bg-orange-600",
+            base: "bg-orange-300",
             hover: "hover:bg-orange-200 hover:text-orange-950"
         },
         green: {
             base: "bg-green-600",
             hover: "hover:bg-green-200 hover:text-green-950"
+        },
+        red: {
+            base: "bg-red-300",
+            hover: "hover:bg-red-200 hover:text-green-950"
         }
     }
     
