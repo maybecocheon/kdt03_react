@@ -45,8 +45,8 @@ function FestivalContent() {
         <div className="w-full h-full p-5 flex flex-col items-center gap-3">
             <div className="w-full p-10 text-center font-extrabold text-4xl mb-5 text-black bg-blue-50">부산 축제 정보</div>
             {/* <select value={selectedValue} onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md"> */}
-            <select ref={selRef} onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md">
-                <option value="" selected>== 모든 지역 ==</option>
+            <select ref={selRef} defaultValue="" onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md">
+                <option value="">== 모든 지역 ==</option>
                 {area}
             </select>
             <div className="w-full h-auto p-5 flex flex-wrap grid-cols-3 justify-center gap-4">

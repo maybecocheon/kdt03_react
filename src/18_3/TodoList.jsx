@@ -36,7 +36,7 @@ export default function TodoList() {
     }, [todos])
 
     return (
-        <div className="w-9/10 h-full m-10">
+        <div className="w-9/10 h-full m-10 overflow-y-auto">
             <div className="font-extrabold text-4xl mb-5 text-center">할일목록(Supabase Client 라이브러리 사용)</div>
             <div className="bg-blue-50 p-5 text-center border-1 border-gray-300 rounded-2xl mb-5 flex justify-center gap-7">
                 <div className="bg-blue-100 p-2 rounded-lg w-20 h-20 flex flex-col justify-center"><p>전체:</p><p className="font-extrabold text-xl">{todos.length}개</p></div>

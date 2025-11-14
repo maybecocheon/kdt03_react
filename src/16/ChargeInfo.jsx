@@ -70,7 +70,7 @@ export default function ChargeInfo() {
     const [stats, setStats] = useState([]);
     const getFetchdata = async () => {
         const apiKey = import.meta.env.VITE_PUBLIC_API;
-        let url = `https://apis.data.go.kr/B552584/EvCharger/getChargerInfo?serviceKey=${apiKey}`
+        let url = `/api/B552584/EvCharger/getChargerInfo?serviceKey=${apiKey}`
         url = url + `&numOfRows=10&pageNo=1&zcode=${sel1Ref.current.value}&zscode=${sel2Ref.current.value}&kind=${sel3Ref.current.value}&kinddetail=${sel4Ref.current.value}&dataType=JSON`;
         // 로딩중 표시
         setLoading(true);
@@ -85,7 +85,6 @@ export default function ChargeInfo() {
         let statCard = Object.keys(statJson).map(scode => <ChargedCard key={scode} title={statJson[scode]} count={text.filter(item => item.stat == scode).length} />)
         setStats(statCard);
         // 상세 페이지로 이동할 카드
-        console.log(text)
         let info = text.map((item, idx) =>
             <Link key={item.statId + idx} to="/chargeDetail" state={{ contents: item }}>
                 <ChargeStat title={item.statNm} chgerId={item.chgerId} />
