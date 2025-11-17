@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './component/Header.jsx'
 import Footer from './component/Footer.jsx'
-import MyClock from './02/MyClock.jsx'
+// import MyClock from './02/MyClock.jsx'
 // import MyDiv1 from './03/MyDiv1.jsx'
 // import MyList from './04/MyList.jsx'
 // import MyToggle from './05/MyToggle.jsx'
@@ -25,6 +25,7 @@ import ChargerDetail from './16/ChargerDetail.jsx'
 // import JotaiCnt from './17/JotaiCnt.jsx'
 import TodoList from './18_3/TodoList.jsx'
 import Subway from './19/Subway.jsx'
+import Login from './20/Login.jsx'
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Header />
         <main className='h-full w-full container mx-auto flex flex-col flex-grow justify-center items-center overflow-y-auto'>
           <Routes>
-            <Route path="/" element={<MyClock />} />
+            <Route path="/" element={<Login />} />
             <Route path="/lotto" element={<Lotto />} />
             <Route path="/boxoffice" element={<BoxOffice />} />
             <Route path="/gallery" element={<Gallery />} />
