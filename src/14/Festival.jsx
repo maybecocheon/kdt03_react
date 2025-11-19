@@ -22,7 +22,6 @@ export default function Festival() {
         const data = await resp.json();
         let options = await data.getFestivalKr.item.map(item => item.GUGUN_NM);
         options = [...new Set(options)].sort();
-        options = options.map((item, i) => <option key={i} value={item}>{item}</option>);
         setOptionlist(options);
         let infos;
         // if (selectedValue != null){
@@ -32,10 +31,6 @@ export default function Festival() {
         } else {
             infos = await data.getFestivalKr.item;
         }
-        infos = infos.map((item, i) =>
-            <Link key={i} state={{ contents: item }} to="/festival/contents">
-                <TailCard key={i} source={item.MAIN_IMG_THUMB} title={item.TITLE} subtitle={item.USAGE_DAY_WEEK_AND_TIME} keyword={item.PLACE} />
-            </Link>);
         setCard(infos);
     }
 
@@ -53,10 +48,17 @@ export default function Festival() {
             {/* <select value={selectedValue} onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md"> */}
             <select ref={selRef} onChange={handleSelected} className="w-1/5 p-2 border-1 border-black text-center bg-blue-50 rounded-md">
                 <option value="" selected>== 모든 지역 ==</option>
-                {optionlist}
+                {
+                    optionlist.map((item, i) => <option key={i} value={item}>{item}</option>)
+                }
             </select>
-            <div className="w-9/10 p-5 grid grid-cols-3 gap-6">
-                {card}
+            <div className="w-9/10 p-5 grid 2xl:grid-cols-3 lg:grid-cols-2 gap-6">
+                {
+                    card.map((item, i) =>
+                        <Link key={i} state={{ contents: item }} to="/festival/contents">
+                            <TailCard key={i} source={item.MAIN_IMG_THUMB} title={item.TITLE} subtitle={item.USAGE_DAY_WEEK_AND_TIME} keyword={item.PLACE} />
+                        </Link>)
+                }
             </div>
         </div>
     )

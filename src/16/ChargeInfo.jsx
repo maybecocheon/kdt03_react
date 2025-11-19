@@ -15,6 +15,7 @@ export default function ChargeInfo() {
     // 데이터에서 sel1에 들어갈 값들만 배열로 추출
     let zcodeValues = Object.values(zcode);
     let zcodeKeys = Object.keys(zcode);
+    console.log(zcodeValues)
 
     // select 된 값 불러오기 위해 ref 변수 설정
     const sel1Ref = useRef();
