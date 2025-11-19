@@ -66,7 +66,7 @@ export default function Gallery() {
           </div>
         </form>
       </div>
-      <div className="w-full h-auto p-5 flex justify-center flex-wrap grid-cols-3 gap-4">
+      <div className="w-full p-5 grid grid-cols-3 gap-6 pl-10">
         {
           card? card.map((item, i) =>
             <TailCard key={i} source={item.galWebImageUrl} title={item.galTitle} subtitle={item.galPhotographyLocation} keyword={item.galSearchKeyword} />)

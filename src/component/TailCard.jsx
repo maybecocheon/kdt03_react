@@ -13,9 +13,9 @@ export default function TailCard({source, title, subtitle, keyword}) {
   }
 
   return (
-    <div className="rounded-lg w-100 shadow-md overflow-hidden flex flex-col">
+    <div className="rounded-lg w-100 shadow-md overflow-hidden flex flex-col h-full">
       <img src={source} className="rounded-lg h-60 w-full object-cover"/>
-      <div className="flex flex-col p-4 flex-grow">
+      <div className="flex flex-col p-4">
         <div>
         <p className="font-extrabold text-2xl text-gray-900 mb-1">{title}</p>
         <p className="text-lg text-gray-900">{subtitle}</p>

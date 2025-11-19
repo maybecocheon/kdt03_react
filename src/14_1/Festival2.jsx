@@ -49,7 +49,7 @@ function FestivalContent() {
                 <option value="">== 모든 지역 ==</option>
                 {area}
             </select>
-            <div className="w-full h-auto p-5 flex flex-wrap grid-cols-3 justify-center gap-4">
+            <div className="w-9/10 p-5 grid grid-cols-3 gap-6">
                 {
                     areaFestival.map((item, i) =>
                         <Link key={i} state={{ contents: item }} to="/festival/contents">
