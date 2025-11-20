@@ -18,7 +18,7 @@ export default function TodoInput({ getTodos }) {
                                     .insert({ text: todoInputValue.current.value, completed: false });
             
         if (error) {
-            console.error('Error adding todos:', resp.statusText);
+            console.error('Error adding todos:', error);
         } else {
             getTodos();
             todoInputValue.current.value = "";

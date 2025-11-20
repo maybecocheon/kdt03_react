@@ -43,7 +43,7 @@ export default function TodoItem({ todo, getTodos }) {
     const onClickSave = async () => {
         if (editValue == "") {
             alert("값을 입력해 주세요.");
-            editValue.focus();
+            editRef.current.focus();
             return;
         }
 
